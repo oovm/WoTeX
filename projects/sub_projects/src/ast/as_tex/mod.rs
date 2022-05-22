@@ -1,16 +1,24 @@
-use std::fmt::Write;
 use super::*;
 
 
 impl LowerHex for ASTNode {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        f.write_str("x")
+        match self {
+            ASTNode::Sequence(e) => { LowerHex::fmt(e, f) }
+            ASTNode::List(_) => { todo!() }
+            ASTNode::Variable(e) => { Display::fmt(e, f) }
+            ASTNode::Function(_, _) => { todo!() }
+            ASTNode::Evaluated(e) => { LowerHex::fmt(&**e, f) }
+        }
     }
 }
 
 impl LowerHex for Sequence {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        todo!()
+        for i in &self.inner {
+            LowerHex::fmt(i, f)?;
+        }
+        Ok(())
     }
 }
 
@@ -47,12 +55,6 @@ impl LowerHex for MaybeParentheses {
         if parentheses {
             f.write_str("\\right)")?;
         }
-        f.write_char('{')
-    }
-}
-
-impl ASTNode {
-    pub fn is_simple(&self) -> bool {
-        true
+        f.write_char('}')
     }
 }

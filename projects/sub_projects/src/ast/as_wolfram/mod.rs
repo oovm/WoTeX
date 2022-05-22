@@ -6,7 +6,7 @@ impl UpperHex for ASTNode {
         match self {
             ASTNode::Sequence(_) => { todo!() }
             ASTNode::List(_) => { todo!() }
-            ASTNode::Symbol(_) => { todo!() }
+            ASTNode::Variable(_) => { todo!() }
             ASTNode::Function(_, _) => { todo!() }
             ASTNode::Evaluated(e) => { LowerHex::fmt(&**e, f) }
         }
