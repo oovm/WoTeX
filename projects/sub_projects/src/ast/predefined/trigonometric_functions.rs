@@ -1,46 +1,47 @@
 use super::*;
 
-impl MaybeParentheses {
-    pub fn sin(rest: Vec<ASTNode>) -> Self {
-        Self {
+
+impl TrigonometricFunction {
+    pub fn sin(arg: Sequence) -> Box<MaybeParentheses> {
+        box MaybeParentheses {
             head: String::from("sin"),
             operator_name: false,
-            rest,
+            rest: vec![arg],
         }
     }
-    pub fn cos(rest: Vec<ASTNode>) -> Self {
-        Self {
+    pub fn cos(arg: Sequence) -> Box<MaybeParentheses> {
+        box MaybeParentheses {
             head: String::from("cos"),
             operator_name: false,
-            rest,
+            rest: vec![arg],
         }
     }
-    pub fn tan(rest: Vec<ASTNode>) -> Self {
-        Self {
+    pub fn tan(arg: Sequence) -> Box<MaybeParentheses> {
+        box MaybeParentheses {
             head: String::from("tan"),
             operator_name: false,
-            rest,
+            rest: vec![arg],
         }
     }
-    pub fn cot(rest: Vec<ASTNode>) -> Self {
-        Self {
+    pub fn cot(arg: Sequence) -> Box<MaybeParentheses> {
+        box MaybeParentheses {
             head: String::from("cot"),
             operator_name: false,
-            rest,
+            rest: vec![arg],
         }
     }
-    pub fn sec(rest: Vec<ASTNode>) -> Self {
-        Self {
+    pub fn sec(arg: Sequence) -> Box<MaybeParentheses> {
+        box MaybeParentheses {
             head: String::from("sec"),
             operator_name: false,
-            rest,
+            rest: vec![arg],
         }
     }
-    pub fn csc(rest: Vec<ASTNode>) -> Self {
-        Self {
+    pub fn csc(arg: Sequence) -> Box<MaybeParentheses> {
+        box MaybeParentheses {
             head: String::from("csc"),
             operator_name: false,
-            rest,
+            rest: vec![arg],
         }
     }
 }

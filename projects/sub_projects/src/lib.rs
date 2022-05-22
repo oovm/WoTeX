@@ -1,3 +1,5 @@
+#![feature(box_syntax)]
+
 mod errors;
 mod ast;
 mod vm;

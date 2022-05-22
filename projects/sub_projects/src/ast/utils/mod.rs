@@ -8,3 +8,8 @@ impl ASTNode {
         matches!(self, ASTNode::List(_))
     }
 }
+
+
+impl WoTeXFunction for ASTNode {}
+impl WoTeXFunction for Sequence {}
+impl WoTeXFunction for MaybeParentheses {}
