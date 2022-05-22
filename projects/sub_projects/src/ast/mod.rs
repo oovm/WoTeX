@@ -1,14 +1,20 @@
-use std::fmt::{Formatter, LowerHex};
+use std::fmt::{Formatter, LowerHex, UpperHex};
 
 mod predefined;
 mod as_tex;
+mod utils;
 
 
 pub enum ASTNode {
-    Function(String, Vec<ASTNode>),
+    Sequence(Vec<ASTNode>),
+    List(Vec<ASTNode>),
     Symbol(String),
-    Integrate(Vec<ASTNode>),
-    MaybeParentheses(MaybeParentheses),
+    Function(String, Vec<ASTNode>),
+    Evaluated(Box<dyn WoTeXFunction>),
+}
+
+pub trait WoTeXFunction: LowerHex + UpperHex {
+    fn is_simple(&self) -> bool;
 }
 
 pub struct Integrate {
@@ -22,7 +28,8 @@ pub struct Integrate {
 /// eg: sin cos tan arctan
 pub struct MaybeParentheses {
     head: String,
-    rest: ASTNode,
+    operator_name: bool,
+    rest: Vec<ASTNode>,
 }
 
 #[test]
