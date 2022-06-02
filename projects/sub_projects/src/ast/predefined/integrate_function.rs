@@ -17,12 +17,6 @@ impl Integrate {
     }
 }
 
-impl UpperHex for Integrate {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        todo!()
-    }
-}
-
 impl Integrate {
     fn write_one_head(&self, f: &mut Formatter<'_>, head: &List) -> std::fmt::Result {
         write!(f, "\\{} ", self.kind)?;
